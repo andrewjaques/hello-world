@@ -20,7 +20,6 @@ print(array_2d[0, 1])
 df = pd.DataFrame(array_2d)  # Making a Data Frame out of existing array_2d
 
 # Data Frames - to set labels for columns
-
 df.columns = ["First", "Second"]
 
 print(df)
