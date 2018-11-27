@@ -22,10 +22,24 @@ df = pd.DataFrame(array_2d)  # Making a Data Frame out of existing array_2d
 # Data Frames - to set labels for columns
 df.columns = ["First", "Second"]
 
-print(df)
+print("\n", df)
 
 csv_path = os.path.join('Test1.csv')
 
 andrew_df = pd.read_csv(csv_path, nrows=10, index_col="Test Number", usecols=["Test Number", "PSNR"])
 
-print(andrew_df)
+print("\n", andrew_df)
+
+# Creating a new variable for just the PSNR figures in the andrew_df data frame:
+psnr_figures = andrew_df['PSNR']
+# Determining the number of unique PSNR figures using Panda's own unique function:
+print("\n", len(pd.unique(psnr_figures)))
+
+new_csv = os.path.join('example-dvta-results-data-latin1.csv')
+new_df = pd.read_csv(new_csv, encoding="latin1", usecols=["Test Description", "Lipsync (ms)", "E-E Delay (ms)", "PSNRY Bad Frames", "PSNRY Average"])
+
+# iloc (index-location) method:
+print("\n", new_df.iloc[0, 0:])
+# loc (location) method:
+print("\n", new_df.loc[12, 'PSNRY Bad Frames'])
+
